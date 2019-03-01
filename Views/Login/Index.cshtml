@@ -1,0 +1,74 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+
+
+
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+
+            $("input").click(function () {
+
+
+
+                $.ajax({
+                    method: "POST",
+                    url: "/Login/CheckUser",
+                    dataType: 'json',
+                    data: { name: "John", address: "Boston" },
+
+                    success: function (data, status)  //服务器成功响应处理函数
+                    {
+                        alert("suc" + data);
+                    },
+                    error: function (data, status, e)//服务器响应失败处理函数
+                    {
+                        alert("err" + e);
+                    }
+
+                })
+
+
+                //    .done(function (msg) {
+                //    alert("Data Saved: " + msg);
+                //});
+            
+
+            });
+
+
+
+        });
+
+    </script>
+</head>
+<body>
+
+
+    用户名：<input type="text" name="username" id="username" />
+    <input type="button" value="提交" />
+
+</body>
+</html>
